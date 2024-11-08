@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Organizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: "Mulish", sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 600px;
+        }
+
+        .link-button {
+            font-family: "Mulish", sans-serif;
+            display: block;
+            margin: 10px auto;
+            padding: 15px 30px;
+            font-size: 25px;
+            font-weight: 600;
+            border-radius: 10px;
+            border: 1px solid rgb(146, 146, 146);
+            background-color: white;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            width: 500px;
+            transition: background-color 0.3s;
+        }
+
+        .link-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        .hidden-links {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .hidden-links.open {
+            max-height: 500px;
+        }
+
+        .hidden-links .link-button {
+            background-color: white;
+        }
+
+        .hidden-links .link-button:hover {
+            background-color: #e0e0e0;
+        }
+
+        #zabbix {
+            width: 565px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+    </style>
+    <script>
+        function toggleHiddenLinks() {
+            const hiddenLinks = document.getElementById('hidden-links');
+            if (hiddenLinks.classList.contains('open')) {
+                hiddenLinks.classList.remove('open');
+            } else {
+                hiddenLinks.classList.add('open');
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <a href="https://painel.plugg.to/dashboard" class="link-button" target="_blank"><i class="fas fa-plug"></i> Plugg.To</a>
+        <a href="https://192.168.7.15/ui/#/login" class="link-button" target="_blank"><i class="fas fa-server"></i> VMware ESXi</a>
+        <a href="http://192.168.7.81:3333/" class="link-button" target="_blank"><i class="fas fa-tools"></i> T.I. Chamados</a>
+        <button id="zabbix" class="link-button" onclick="toggleHiddenLinks()"><i class="fas fa-server"></i> Zabbix</button>
+        
+        <div id="hidden-links" class="hidden-links">
+            <a href="http://192.168.7.186/zabbix/zabbix.php?action=dashboard.view&dashboardid=354" class="link-button" target="_blank"><i class="fas fa-server"></i> Zabbix - Problemas</a>
+            <a href="http://192.168.7.186/zabbix/zabbix.php?action=dashboard.view&dashboardid=1" class="link-button" target="_blank"><i class="fas fa-server"></i> Zabbix - Uso de Memória</a>
+            <a href="http://192.168.7.186/zabbix/zabbix.php?action=dashboard.view&dashboardid=355" class="link-button" target="_blank"><i class="fas fa-server"></i> Zabbix - Uso de CPU</a>
+            <a href="http://192.168.7.186/zabbix/zabbix.php?action=dashboard.view&dashboardid=356&from=now-1h&to=now" class="link-button" target="_blank"><i class="fas fa-server"></i> Zabbix - Armazenamento</a>
+        </div>
+    </div>
+</body>
+</html>
